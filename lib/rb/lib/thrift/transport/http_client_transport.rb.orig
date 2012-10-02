@@ -29,12 +29,12 @@ module Thrift
     def initialize(url)
       @url = URI url
       @headers = {'Content-Type' => 'application/x-thrift'}
-      @outbuf = Bytes.empty_byte_buffer
+      @outbuf = ""
     end
 
     def open?; true end
     def read(sz); @inbuf.read sz end
-    def write(buf); @outbuf << Bytes.force_binary_encoding(buf) end
+    def write(buf); @outbuf << buf end
 
     def add_headers(headers)
       @headers = @headers.merge(headers)
